@@ -6,12 +6,16 @@ dtbo-$(CONFIG_ARCH_NEO) += display/neo-sde.dtbo \
 endif
 
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
-dtbo-$(CONFIG_ARCH_PINEAPPLE) += display/pineapple-sde.dtbo \
-		display/aurora-sde-display-mtp-overlay.dtbo \
-		display/shennong-sde-display-mtp-overlay.dtbo \
-		display/houji-sde-display-mtp-overlay.dtbo \
-		display/manet-sde-display-mtp-overlay.dtbo \
-		display/goku-sde-display-mtp-overlay.dtbo \
+dtbo-$(CONFIG_ARCH_PINEAPPLE) += display/pineapple-sde.dtbo
+ifeq ($(CONFIG_TARGET_IS_XIAOMI_DEVICE),y)
+dtbo-$(CONFIG_TARGET_PRODUCT_HOUJI) += display/houji-sde-display-mtp-overlay.dtbo
+dtbo-$(CONFIG_TARGET_PRODUCT_SHENNONG) += display/shennong-sde-display-mtp-overlay.dtbo
+dtbo-$(CONFIG_TARGET_PRODUCT_SUIREN) += display/suiren-sm8650-camera-sensor.dtbo
+dtbo-$(CONFIG_TARGET_PRODUCT_MANET) += display/manet-sde-display-mtp-overlay.dtbo
+dtbo-$(CONFIG_TARGET_PRODUCT_AURORA) += display/aurora-sde-display-mtp-overlay
+dtbo-$(CONFIG_TARGET_PRODUCT_GOKU) += display/goku-sde-display-mtp-overlay.dtbo
+else
+dtbo-$(CONFIG_ARCH_PINEAPPLE) += \
 		display/pineapple-sde-display-rumi-overlay.dtbo \
 		display/pineapple-sde-display-cdp-overlay.dtbo \
 		display/pineapple-sde-display-rcm-overlay.dtbo \
@@ -22,6 +26,7 @@ dtbo-$(CONFIG_ARCH_PINEAPPLE) += display/pineapple-sde.dtbo \
 		display/pineapple-sde-display-cdp-nfc-overlay.dtbo \
 		display/pineapple-sde-display-mtp-nfc-overlay.dtbo \
 		display/pineapple-sde-display-atp-overlay.dtbo
+endif
 else
 dtbo-$(CONFIG_ARCH_PINEAPPLE) += display/trustedvm-pineapple-sde-display-mtp-overlay.dtbo \
 		  display/trustedvm-pineapple-sde-display-cdp-overlay.dtbo \
@@ -75,7 +80,10 @@ dtbo-$(CONFIG_ARCH_CLIFFS) += display/trustedvm-cliffs-sde-display-mtp-overlay.d
 endif
 
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
-dtbo-$(CONFIG_ARCH_VOLCANO) += display/volcano-sde.dtbo \
+dtbo-$(CONFIG_ARCH_VOLCANO) += display/volcano-sde.dtbo
+ifeq ($(CONFIG_TARGET_IS_XIAOMI_DEVICE),y)
+else
+dtbo-$(CONFIG_ARCH_VOLCANO) += \
 		display/volcano-sde-fp1.dtbo \
 		display/volcano-sde-fp2.dtbo \
 		display/volcano-sde-fp3.dtbo \
@@ -92,6 +100,7 @@ dtbo-$(CONFIG_ARCH_VOLCANO) += display/volcano-sde.dtbo \
 		display/volcano-sde-display-iot-mtp-wcd9395-overlay.dtbo \
 		display/volcano-sde-display-iot-mtp-wcd9395-pm7550ba-overlay.dtbo \
 		display/volcano-sde-display-iot-mtp-wingmate-overlay.dtbo
+endif
 else
 dtbo-$(CONFIG_ARCH_VOLCANO) += display/trustedvm-volcano-sde-display-atp-overlay.dtbo \
 		  display/trustedvm-volcano-sde-display-idp-overlay.dtbo \

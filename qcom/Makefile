@@ -28,15 +28,18 @@ PINEAPPLE_BOARDS += \
 		 pineapplep-hdk-overlay.dtbo \
 		 pineapple-dpm-overlay.dtbo \
 		 pineapplep-aim500-overlay.dtbo \
-		 pineapplep-aim500-v2-overlay.dtbo \
-		 shennong-sm8650-overlay.dtbo \
-		 manet-sm8650-overlay.dtbo \
-		 aurora-sm8650-overlay.dtbo \
-		 houji-sm8650-overlay.dtbo \
-		 ruyi-sm8650-overlay.dtbo \
-		 goku-sm8650-overlay.dtbo
+		 pineapplep-aim500-v2-overlay.dtbo
 
 
+ifeq ($(CONFIG_TARGET_IS_XIAOMI_DEVICE),y)
+dtb-y += $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
+dtb-$(CONFIG_TARGET_PRODUCT_HOUJI) += houji-sm8650-overlay.dtbo
+dtb-$(CONFIG_TARGET_PRODUCT_SHENNONG) += shennong-sm8650-overlay.dtbo
+dtb-$(CONFIG_TARGET_PRODUCT_GOKU) += goku-sm8650-overlay.dtbo
+dtb-$(CONFIG_TARGET_PRODUCT_RUYI) += ruyi-sm8650-overlay.dtbo
+dtb-$(CONFIG_TARGET_PRODUCT_AURORA) += aurora-sm8650-overlay.dtbo
+dtb-$(CONFIG_TARGET_PRODUCT_MANET) += manet-sm8650-overlay.dtbo
+else
 pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
 	$(call add-overlays, $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS),$(PINEAPPLE_BASE_DTB))\
 	$(call add-overlays, $(PINEAPPLE_BOARDS) $(APQ_PINEAPPLE_BOARDS),$(PINEAPPLE_APQ_BASE_DTB))
@@ -47,6 +50,7 @@ aurora-overlays-dtb-$(CONFIG_ARCH_PINEAPPLE) += $(PINEAPPLE_BOARDS) $(NOAPQ_PINE
 houji-overlays-dtb-$(CONFIG_ARCH_PINEAPPLE) += $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS) $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
 ruyi-overlays-dtb-$(CONFIG_ARCH_PINEAPPLE) += $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS) $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
 goku-overlays-dtb-$(CONFIG_ARCH_PINEAPPLE) += $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS) $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
+endif
 
 CLIFFS_BASE_DTB += cliffs.dtb cliffs7.dtb
 CLIFFS_APQ_BASE_DTB += cliffsp.dtb cliffs7p.dtb

@@ -16,7 +16,11 @@ dtbo-y += kalama-audio.dtbo \
 endif
 
 ifeq ($(CONFIG_ARCH_PINEAPPLE), y)
-dtbo-y += pineapple-audio.dtbo \
+dtbo-y += pineapple-audio.dtbo
+ifeq ($(CONFIG_TARGET_IS_XIAOMI_DEVICE),y)
+dtbo-$(CONFIG_TARGET_PRODUCT_HOUJI) += houji-audio-mtp.dtbo
+else
+dtbo-y += \
                  pineapple-audio-cdp.dtbo \
                  pineapple-audio-wsa883x-cdp.dtbo \
                  pineapple-audio-cdp-nfc.dtbo \
@@ -43,6 +47,7 @@ dtbo-y += pineapple-audio.dtbo \
                  cliffs7-audio-mtp-wcd9395.dtbo \
                  cliffs-audio-atp.dtbo \
                  cliffs7-audio-atp.dtbo
+endif
 endif
 
 ifeq ($(CONFIG_ARCH_VOLCANO), y)
