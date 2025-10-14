@@ -30,8 +30,10 @@ dtbo-y += pineapple-audio.dtbo \
                  pineapplep-audio-hdk.dtbo \
                  pineapplep-audio-aim500.dtbo \
                  pineapplep-audio-aim500-v2.dtbo \
-                 houji-audio-mtp.dtbo \
-                 cliffs-audio.dtbo \
+                 houji-audio-mtp.dtbo
+endif
+ifeq ($(CONFIG_ARCH_CLIFFS), y)
+dtbo-y += cliffs-audio.dtbo \
                  cliffs-audio-mtp.dtbo \
                  cliffs7-audio-mtp.dtbo \
                  cliffs-audio-qrd.dtbo \
