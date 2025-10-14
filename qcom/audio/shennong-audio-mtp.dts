@@ -1,0 +1,10 @@
+/dts-v1/;
+/plugin/;
+#include "shennong-audio-mtp.dtsi"
+ / {
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	model = "Qualcomm Technologies, Inc. Shennong based on SM8650";
+	qcom,board-id = <0x08 0x00>;
+	qcom,msm-id = <0x22d 0x20000 0x22d 0x10000 0x241 0x20000 0x241 0x10000>;
+	xiaomi,miboard-id = <0x01 0x00>;
+};
