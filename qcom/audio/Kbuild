@@ -19,6 +19,7 @@ ifeq ($(CONFIG_ARCH_PINEAPPLE), y)
 dtbo-y += pineapple-audio.dtbo
 ifeq ($(CONFIG_TARGET_IS_XIAOMI_DEVICE),y)
 dtbo-$(CONFIG_TARGET_PRODUCT_HOUJI) += houji-audio-mtp.dtbo
+dtbo-$(CONFIG_TARGET_PRODUCT_SHENNONG) += shennong-audio-mtp.dtbo
 else
 dtbo-y += \
                  pineapple-audio-cdp.dtbo \
