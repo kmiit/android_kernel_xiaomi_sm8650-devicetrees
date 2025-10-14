@@ -21,6 +21,8 @@ endif
 
 ifeq ($(CONFIG_TARGET_PRODUCT_HOUJI),y)
 dtbo-y += houji-audio-mtp.dtbo
+else ifeq ($(CONFIG_TARGET_PRODUCT_SHENNONG),y)
+dtbo-y += shennong-audio-mtp.dtbo
 else
 dtbo-y += \
                  pineapple-audio-cdp.dtbo \
