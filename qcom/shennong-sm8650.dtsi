@@ -34,6 +34,59 @@
 	qcom,init-voltage = <3300000>;
 };
 
+&qupv3_se8_i2c {
+	status = "ok";
+
+	cs35l43@40 {
+		cirrus,asp-sdout-hiz = <0x03>;
+		cirrus,bst-ipk-ma = <0xfa0>;
+		cirrus,gpio2-src-sel = <0x04>;
+		cirrus,i2c-addr = <0x28>;
+		cirrus,low-pwr-mode-standby = <0x01>;
+		cirrus,vpbr-atk-rate = <0x00>;
+		cirrus,vpbr-atk-vol = <0x05>;
+		cirrus,vpbr-enable = <0x01>;
+		cirrus,vpbr-max-att = <0x03>;
+		cirrus,vpbr-rel-rate = <0x00>;
+		cirrus,vpbr-thld = <0x08>;
+		cirrus,vpbr-wait = <0x00>;
+		compatible = "cirrus,cs35l43";
+		interrupt-parent = <0xffffffff>;
+		interrupts = <0x62 0x2008>;
+		phandle = <0x1b4>;
+		pinctrl-0 = <0x146 0x147>;
+		pinctrl-names = "default";
+		reg = <0x40>;
+		reset-gpios = <0xffffffff 0x55 0x00>;
+		sound-name-prefix = "B";
+		status = "ok";
+	};
+
+	cs35l43@42 {
+		cirrus,asp-sdout-hiz = <0x03>;
+		cirrus,bst-ipk-ma = <0xfa0>;
+		cirrus,gpio2-src-sel = <0x04>;
+		cirrus,i2c-addr = <0x2a>;
+		cirrus,low-pwr-mode-standby = <0x01>;
+		cirrus,vpbr-atk-rate = <0x00>;
+		cirrus,vpbr-atk-vol = <0x05>;
+		cirrus,vpbr-enable = <0x01>;
+		cirrus,vpbr-max-att = <0x03>;
+		cirrus,vpbr-rel-rate = <0x00>;
+		cirrus,vpbr-thld = <0x08>;
+		cirrus,vpbr-wait = <0x00>;
+		compatible = "cirrus,cs35l43";
+		interrupt-parent = <0xffffffff>;
+		interrupts = <0x63 0x2008>;
+		phandle = <0x1b5>;
+		pinctrl-0 = <0x148 0x149>;
+		pinctrl-names = "default";
+		reg = <0x42>;
+		reset-gpios = <0xffffffff 0x6f 0x00>;
+		sound-name-prefix = "T";
+		status = "ok";
+	};
+};
 
 &soc {
 	xiaomi_touch {
