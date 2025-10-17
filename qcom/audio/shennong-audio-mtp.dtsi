@@ -1,4 +1,4 @@
-#include "xiaomi-sm8650-common.dtsi"
+#include "../xiaomi-sm8650-common.dtsi"
 
 &pineapple_snd {
 	qcom,audio-routing =

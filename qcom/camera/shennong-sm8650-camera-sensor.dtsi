@@ -1,5 +1,5 @@
 #include <dt-bindings/msm-camera.h>
-
+#include "pineapple-camera.dtsi"
 //wide
 &cam_csiphy3 {
 	compatible = "qcom,csiphy-v2.2.0-n2", "qcom,csiphy";

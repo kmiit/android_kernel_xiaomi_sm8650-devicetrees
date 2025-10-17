@@ -31,8 +31,9 @@ PINEAPPLE_BOARDS += \
 		 pineapplep-aim500-v2-overlay.dtbo
 
 
-ifeq ($(CONFIG_TARGET_IS_XIAOMI_DEVICE),y)
-dtb-y += $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
+ifeq ($(CONFIG_MI_HARDWARE_ID),y)
+PINEAPPLE_BASE_DTB := pineapple.dtb
+dtb-y += $(PINEAPPLE_BASE_DTB)
 dtb-$(CONFIG_TARGET_PRODUCT_HOUJI) += houji-sm8650-overlay.dtbo
 dtb-$(CONFIG_TARGET_PRODUCT_SHENNONG) += shennong-sm8650-overlay.dtbo
 dtb-$(CONFIG_TARGET_PRODUCT_GOKU) += goku-sm8650-overlay.dtbo
@@ -74,12 +75,15 @@ CLIFFS_BOARDS += \
 		 peridot-sm8635-overlay.dtbo \
 		 chenfeng-sm8635-overlay.dtbo
 
+ifeq ($(CONFIG_MI_HARDWARE_ID),y)
+else
 pineapple-dtb-$(CONFIG_ARCH_CLIFFS) += \
 	$(call add-overlays, $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS),$(CLIFFS_BASE_DTB))\
 	$(call add-overlays, $(CLIFFS_BOARDS),$(CLIFFS_APQ_BASE_DTB))
 pineapple-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB) $(CLIFFS_APQ_BASE_DTB)
 peridot-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB) $(CLIFFS_APQ_BASE_DTB)
 chenfeng-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB) $(CLIFFS_APQ_BASE_DTB)
+endif
 
 VOLCANO_BASE_DTB += volcano.dtb volcano6.dtb volcano6i-fp1.dtb volcano6i-fp2.dtb volcano6i-fp3.dtb volcano6i-fp4.dtb
 VOLCANO_APQ_BASE_DTB += volcano6p.dtb volcano6ip-fp1.dtb volcano6ip-fp2.dtb volcano6ip-fp3.dtb volcano6ip-fp4.dtb
@@ -108,10 +112,13 @@ VOLCANO_BOARDS += \
 		volcano6i-qrd-moselle-overlay.dtbo \
 		volcano6i-mtp-STSafe320-brahma-overlay.dtbo
 
+ifeq ($(CONFIG_MI_HARDWARE_ID),y)
+else
 pineapple-dtb-$(CONFIG_ARCH_VOLCANO) += \
 	$(call add-overlays, $(VOLCANO_BOARDS) $(NOAPQ_VOLCANO_BOARDS),$(VOLCANO_BASE_DTB))\
 	$(call add-overlays, $(VOLCANO_BOARDS), $(VOLCANO_APQ_BASE_DTB))
 pineapple-overlays-dtb-$(CONFIG_ARCH_VOLCANO) += $(VOLCANO_BOARDS) $(NOAPQ_VOLCANO_BOARDS) $(VOLCANO_BASE_DTB) $(VOLCANO_APQ_BASE_DTB)
+endif
 
 dtb-y += $(pineapple-dtb-y)
 dtb-y += $(shennong-dtb-y)
