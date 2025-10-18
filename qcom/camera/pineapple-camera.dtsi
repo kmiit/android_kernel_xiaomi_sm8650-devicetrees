@@ -1132,10 +1132,10 @@
 			hw-tlow = <22>;
 			hw-tsu-sto = <17>;
 			hw-tsu-sta = <18>;
-			hw-thd-dat = <16>;
+			hw-thd-dat = <12>;
 			hw-thd-sta = <15>;
-			hw-tbuf = <24>;
-			hw-scl-stretch-en = <1>;
+			hw-tbuf = <18>;
+			hw-scl-stretch-en = <0>;
 			hw-trdhld = <3>;
 			hw-tsp = <3>;
 			cci-clk-src = <37500000>;
@@ -1369,7 +1369,7 @@
 
 		msm_cam_smmu_jpeg {
 			compatible = "qcom,msm-cam-smmu-cb";
-			iommus = <&apps_smmu 0x18A0 0x0000>;
+			iommus = <&apps_smmu 0x18A0 0x0040>;
 			cam-smmu-label = "jpeg";
 			qcom,iommu-faults = "stall-disable", "non-fatal";
 			qcom,iommu-dma-addr-pool = <0x0 0x100000 0x0 0xffe00000>;
@@ -1665,7 +1665,6 @@
 		sys-cache-names = "small-1", "large-1";
 		sys-cache-uids = <34 38>;
 		enable-smart-qos;
-		enable-cam-drv = <(CAM_DDR_DRV | CAM_CLK_DRV)>;
 		rt-wr-priority-min = <4>;
 		rt-wr-priority-max = <5>;
 		rt-wr-priority-clamp = <6>;
@@ -3248,7 +3247,6 @@
 			<0 600000000 0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal",
 			"turbo";
-		nrt-device;
 		src-clock-name = "icp_clk_src";
 		clock-control-debugfs = "true";
 		fw_name = "CAMERA_ICP";
@@ -3294,7 +3292,6 @@
 			<0 0 0 825000000 0 0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal",
 			"turbo";
-		nrt-device;
 		src-clock-name = "ipe_nps_clk_src";
 		clock-control-debugfs = "true";
 		cam_hw_pid = <15 14 13 31>;
@@ -3329,7 +3326,6 @@
 			<0 0 785000000 0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal",
 			"turbo";
-		nrt-device;
 		src-clock-name = "bps_clk_src";
 		clock-control-debugfs = "true";
 		cam_hw_pid = <6 30>;
