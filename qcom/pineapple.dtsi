@@ -2597,7 +2597,6 @@
 		qcom,vmid = <49>;
 		qcom,firmware-name = "oemvm";
 		memory-region = <&oem_vm_mem &vm_comm_mem>;
-		virtio-backends = <&oem_vm_virt_be0>;
 	};
 
 	gh-secure-vm-loader@2 {
