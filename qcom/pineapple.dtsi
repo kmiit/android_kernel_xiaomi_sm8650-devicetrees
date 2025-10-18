@@ -36,6 +36,12 @@
 		hsuart0	= &qupv3_se14_4uart;
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
+		i2c2 = &qupv3_se8_i2c;
+		i2c3 = &qupv3_hub_i2c4;
+		i2c4 = &qupv3_hub_i2c1;
+		i2c5 = &qupv3_se2_i2c;
+		spi0 = &qupv3_se0_spi;
+		spi1 = &qupv3_se11_spi;
 	};
 
 	reserved_memory: reserved-memory { };
