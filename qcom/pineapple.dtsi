@@ -3272,9 +3272,19 @@
 	/* hyp_reserved_mem doesn't correspond to an actual region. */
 
 	/* merged xbl_dtlog, xbl_ramdump and aop_image regions */
-	xbl_aop_merged_mem: xbl_aop_merged_region@81a00000 {
+	xbl_dtlog_mem: xbl_dtlog_region@81a00000 {
 		no-map;
-		reg = <0x0 0x81a00000 0x0 0x260000>;
+		reg = <0x0 0x81a00000 0x0 0x40000>;
+	};
+
+	xbl_md_mem: xbl_md_region@81bff000 {
+		no-map;
+		reg = <0x0 0x81bff000 0x0 0x1000>;
+	};
+
+	xbl_aop_image_mem: xbl_aop_image_region@81c00000 {
+		no-map;
+		reg = <0x0 0x81c00000 0x0 0x60000>;
 	};
 
 	aop_cmd_db_mem: aop_cmd_db_region@81c60000 {
@@ -3339,6 +3349,11 @@
 	mpss_dsm_mem: mpss_dsm_region@86b00000 {
 		no-map;
 		reg = <0x0 0x86b00000 0x0 0x4900000>;
+	};
+
+	xbl_ramdump_mem: xbl_ramdump_region@84a00000 {
+		no-map;
+		reg = <0x0 0x84a00000 0x0 0x200000>;
 	};
 
 	mpss_dsm_mem_2: mpss_dsm_region_2@8b400000 {
