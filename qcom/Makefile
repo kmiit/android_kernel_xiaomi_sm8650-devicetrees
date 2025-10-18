@@ -12,7 +12,9 @@ add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o
 #
 
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
+ifneq ($(CONFIG_MI_HARDWARE_ID),)
 
+else
 PINEAPPLE_BASE_DTB += pineapple-v2.dtb pineapple-qcm.dtb
 PINEAPPLE_APQ_BASE_DTB += pineapplep-v2.dtb pineapplep-sg-v2.dtb pineappleq-v2.dtb pineapplep-qcs.dtb
 
@@ -94,6 +96,7 @@ pineapple-dtb-$(CONFIG_ARCH_VOLCANO) += \
 pineapple-overlays-dtb-$(CONFIG_ARCH_VOLCANO) += $(VOLCANO_BOARDS) $(NOAPQ_VOLCANO_BOARDS) $(VOLCANO_BASE_DTB) $(VOLCANO_APQ_BASE_DTB)
 
 dtb-y += $(pineapple-dtb-y)
+endif
 
 KALAMA_BASE_DTB += kalama.dtb kalama-v2.dtb
 KALAMA_APQ_BASE_DTB += kalamap.dtb kalamap-v2.dtb
