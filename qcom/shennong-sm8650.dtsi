@@ -6,6 +6,7 @@
 #include "shennong-pinctrl.dtsi"
 #include "xiaomi-sm8650-common.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/phy/qcom,usb3-4nm-qmp-combo.h>
 
 &apps_rsc_drv2 {
         rpmh-regulator-ldod3 {
@@ -557,12 +558,6 @@
 			active-config1 {
 				temperature = <125000>;
 				hysteresis = <1000>;
-				type = "passive";
-			};
-
-			skin_msm_config0: skin-msm-config0 {
-				temperature = <60000>;
-				hysteresis = <10000>;
 				type = "passive";
 			};
 		};
