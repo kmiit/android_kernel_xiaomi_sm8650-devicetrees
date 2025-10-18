@@ -1,5 +1,5 @@
 ifneq ($(CONFIG_MI_HARDWARE_ID),)
-
+dtbo-$(CONFIG_ARCH_PINEAPPLE)	+= pineapple-camera-v2.dtbo
 else
 dtbo-$(CONFIG_ARCH_PINEAPPLE)	:= pineapple-camera.dtbo
 dtbo-$(CONFIG_ARCH_PINEAPPLE)	+= pineapple-camera-v2.dtbo \
