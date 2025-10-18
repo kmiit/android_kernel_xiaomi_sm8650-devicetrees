@@ -1385,7 +1385,6 @@
 		interrupt-names = "hc_irq", "pwr_irq";
 
 		bus-width = <4>;
-		no-sdio;
 		no-mmc;
 		qcom,restore-after-cx-collapse;
 
