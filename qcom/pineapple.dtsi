@@ -326,7 +326,7 @@
 	ranges = <0 0 0 0xffffffff>;
 	compatible = "simple-bus";
 
-	disp_rdump_region@d5100000 {
+	disp_rdump_region@fc400000 {
 	};
 
 	psci {
