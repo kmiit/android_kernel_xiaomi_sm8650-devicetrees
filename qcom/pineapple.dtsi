@@ -3499,7 +3499,7 @@
 
 	hwfence_shbuf: hwfence-shmem {
 		no-map;
-		reg = <0x0 0xd4e23000 0x0 0x2dd000>;
+		reg = <0x0 0xff100000 0x0 0x2dd000>;
 	};
 
 	vm_comm_mem: vm_comm_mem_region {
