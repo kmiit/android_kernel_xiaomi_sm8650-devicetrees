@@ -3264,6 +3264,11 @@
 		reg = <0x0 0x80e00000 0x0 0x400000>;
 	};
 
+	dump_display_mem: dump_display_region@816e0000 {
+		no-map;
+		reg = <0x0 0x816e0000 0x0 0x800>;
+	};
+
 	/*
 	 * hyp_tags_mem is dynamically removed from the RAM
 	 * partition tables before boot occurs. Size of region
