@@ -1,3 +1,5 @@
+ifneq ($(CONFIG_MI_HARDWARE_ID),)
+else
 ifeq ($(CONFIG_TARGET), msm.neo_la)
 dtbo-$(CONFIG_ARCH_NEO) += display/neo-sde.dtbo \
 		display/neo_la-sde-no-display-overlay.dtbo \
@@ -113,6 +115,7 @@ endif
 
 ifeq ($(CONFIG_ARCH_SA8155), y)
 dtbo-y += display/sa8155-adp-star-display.dtbo
+endif
 endif
 
 always-y    := $(dtb-y) $(dtbo-y)
