@@ -3518,9 +3518,7 @@
 	};
 
 	oem_vm_mem: oem_vm_region@f7c00000 {
-		compatible = "shared-dma-pool";
-		reg = <0x0 0xf7c00000 0x0 0x4c00000>;
-		reusable;
+		no-map;
 		alignment = <0x0 0x400000>;
 	};
 
