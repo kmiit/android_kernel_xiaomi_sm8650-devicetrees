@@ -815,6 +815,7 @@
 			regulator-max-microvolt = <900000>;
 			qcom,init-voltage = <832000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+			qcom,proxy-consumer-enable;
 		};
 	};
 
