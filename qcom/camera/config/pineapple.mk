@@ -1,4 +1,5 @@
 ifneq ($(CONFIG_MI_HARDWARE_ID),)
+dtbo-$(CONFIG_TARGET_PRODUCT_SHENNONG) += shennong-sm8650-camera-sensor.dtbo pineapple-camera.dtbo
 else
 dtbo-$(CONFIG_ARCH_PINEAPPLE)	:= pineapple-camera.dtbo
 dtbo-$(CONFIG_ARCH_PINEAPPLE)	+= pineapple-camera-v2.dtbo \
