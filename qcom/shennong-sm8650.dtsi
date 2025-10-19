@@ -8,6 +8,35 @@
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/phy/qcom,usb3-4nm-qmp-combo.h>
 
+/*statellite config */
+#include <dt-bindings/clock/qcom,camcc-pineapple.h>
+#include <dt-bindings/clock/qcom,dispcc-pineapple.h>
+#include <dt-bindings/clock/qcom,gcc-pineapple.h>
+#include <dt-bindings/clock/qcom,gpucc-pineapple.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
+#include <dt-bindings/clock/qcom,tcsrcc-pineapple.h>
+#include <dt-bindings/clock/qcom,videocc-pineapple.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/soc/qcom,ipcc.h>
+#include <dt-bindings/soc/qcom,rpmh-rsc.h>
+#include <dt-bindings/interconnect/qcom,pineapple.h>
+#include <dt-bindings/interconnect/qcom,icc.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/spmi/spmi.h>
+#include <dt-bindings/power/qcom-aoss-qmp.h>
+#include <dt-bindings/clock/qcom,aop-qmp.h>
+/*statellite config */
+/ {
+	model = "Qualcomm Technologies, Inc. Shennong based on SM8650";
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
+	qcom,board-id = <8 0>;
+	xiaomi,miboard-id = <0x1 0>;
+	aliases {
+		hsuart1 = &qupv3_se13_4uart;
+	};
+};
+
 &apps_rsc_drv2 {
         rpmh-regulator-ldod3 {
                 compatible = "qcom,rpmh-vrm-regulator";
@@ -72,6 +101,35 @@
 		status = "ok";
 	};
 
+	tiantong_mdm {
+		compatible = "modem,gpio-tiantong";
+		interrupt-parent = <&tlmm>;
+		interrupts = <48 0x0>;
+		debounce-time = <30>;
+		vdda3p3_vdd-supply = <&L8B>;
+		vdda1p2_vdd-supply = <&L3D>;
+		gpio-bq-sleep-ap = <&tlmm 64 0x0>;
+		gpio-aq-sleep-bp = <&tlmm 70 0x0>;
+		gpio-rst         = <&tlmm 65 0x0>;
+		gpio-boot-mode0  = <&tlmm 78 0x0>;
+		gpio-boot-mode3  = <&tlmm 79 0x0>;
+		gpio-sat-1p1-en  = <&tlmm 106 0x0>;
+		gpio-sat-1p8-en  = <&tlmm 105 0x0>;
+		gpio-tt-uart-en  = <&tlmm 97 0x0>;
+		gpio-sim-signal-1= <&tlmm 66 0x0>;
+		gpio-sim-signal-2= <&tlmm 72 0x0>;
+		gpio-sim-power-1-qc = <&tlmm 82 0x0>;
+		gpio-sim-power-1-ntn= <&tlmm 67 0x0>;
+		gpio-sim-power-2-qc = <&tlmm 84 0x0>;
+		gpio-sim-power-2-ntn= <&tlmm 73 0x0>;
+
+		pinctrl-names    = "default";
+		pinctrl-0 	= <&bp_sleep_ap_ctl>,
+				  <&ap_sleep_bp_ctl>,
+				  <&rst_ctl>,
+				  <&boot_mode_ctl>,
+				  <&sim_switch_ctl>;
+	};
 };
 
 &L16B {
@@ -231,6 +289,76 @@
 				"gpio50";
 			drive-strength = <2>;
 			bias-pull-down;
+		};
+	};
+	
+	bp_sleep_ap_ctl: bp_sleep_ap_ctl {
+		mux {
+			pins = "gpio64";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio64";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	ap_sleep_bp_ctl: ap_sleep_bp_ctl {
+		mux {
+			pins = "gpio70";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio70";
+			drive-strength = <2>;
+			bias-disable;
+			output-enable;
+		};
+	};
+
+	rst_ctl: rst_ctl {
+		mux {
+			pins = "gpio65";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio65";
+			drive-strength = <2>;
+			bias-disable;
+			output-enable;
+		};
+	};
+
+	boot_mode_ctl: boot_mode_ctl {
+		mux {
+			pins = "gpio78", "gpio79", "gpio106", "gpio105", "gpio97";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio78", "gpio79", "gpio106", "gpio105", "gpio97";
+			drive-strength = <2>;
+			bias-disable;
+			output-enable;
+		};
+	};
+
+	sim_switch_ctl: sim_switch_ctl {
+		mux {
+			pins = "gpio66", "gpio72", "gpio82", "gpio67", "gpio84", "gpio73";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio66", "gpio72", "gpio82", "gpio67", "gpio84", "gpio73";
+			drive-strength = <2>;
+			bias-disable;
+			output-enable;
 		};
 	};
 };
@@ -558,6 +686,12 @@
 			active-config1 {
 				temperature = <125000>;
 				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			skin_msm_config0: skin-msm-config0 {
+				temperature = <60000>;
+				hysteresis = <10000>;
 				type = "passive";
 			};
 		};
@@ -991,6 +1125,33 @@
 		0x01 0x59
 		0x03 0x5a
 		0x02 0x5b>;
+};
+
+&qupv3_2 {
+	qupv3_se13_4uart: qcom,qup_uart@894000 {
+		compatible = "qcom,msm-geni-serial-hs";
+		reg = <0x894000 0x4000>;
+		reg-names = "se_phys";
+		interrupts-extended = <&intc GIC_SPI 587 IRQ_TYPE_LEVEL_HIGH>;
+		clock-names = "se-clk";
+		clocks = <&gcc GCC_QUPV3_WRAP2_S5_CLK>;
+		interconnect-names = "qup-core", "qup-config", "qup-memory";
+		interconnects =
+		<&clk_virt MASTER_QUP_CORE_2 &clk_virt SLAVE_QUP_CORE_2>,
+		<&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_QUP_2>,
+		<&aggre2_noc MASTER_QUP_2 &mc_virt  SLAVE_EBI1>;
+		pinctrl-names = "default", "active", "sleep", "shutdown";
+		pinctrl-0 = <&qupv3_se13_default_cts>, <&qupv3_se13_default_rts>,
+		<&qupv3_se13_default_tx>, <&qupv3_se13_default_rx>;
+		pinctrl-1 = <&qupv3_se13_cts>, <&qupv3_se13_rts>,
+		<&qupv3_se13_tx>, <&qupv3_se13_rx>;
+		pinctrl-2 = <&qupv3_se13_cts>, <&qupv3_se13_rts>,
+		<&qupv3_se13_tx>, <&qupv3_se13_default_rx>;
+		pinctrl-3 = <&qupv3_se13_default_cts>, <&qupv3_se13_default_rts>,
+		<&qupv3_se13_default_tx>, <&qupv3_se13_default_rx>;
+		qcom,auto-suspend-disable;
+		status = "ok";
+	};
 };
 
 &battery_charger {
