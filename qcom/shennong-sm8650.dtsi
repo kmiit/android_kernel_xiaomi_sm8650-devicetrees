@@ -101,34 +101,25 @@
 		status = "ok";
 	};
 
-	tiantong_mdm {
-		compatible = "modem,gpio-tiantong";
+	jingshang_mdm {
+		compatible = "mdm,gpio-jingshang";
 		interrupt-parent = <&tlmm>;
-		interrupts = <48 0x0>;
+		interrupts = <64 0x0>;
 		debounce-time = <30>;
 		vdda3p3_vdd-supply = <&L8B>;
-		vdda1p2_vdd-supply = <&L3D>;
+		vdda1p1_vdd-supply = <&L3D>;
 		gpio-bq-sleep-ap = <&tlmm 64 0x0>;
 		gpio-aq-sleep-bp = <&tlmm 70 0x0>;
 		gpio-rst         = <&tlmm 65 0x0>;
-		gpio-boot-mode0  = <&tlmm 78 0x0>;
-		gpio-boot-mode3  = <&tlmm 79 0x0>;
-		gpio-sat-1p1-en  = <&tlmm 106 0x0>;
+		gpio-sim-ctl0    = <&tlmm 200 0x0>;
+		gpio-sim-ctl1    = <&tlmm 201 0x0>;
 		gpio-sat-1p8-en  = <&tlmm 105 0x0>;
-		gpio-tt-uart-en  = <&tlmm 97 0x0>;
-		gpio-sim-signal-1= <&tlmm 66 0x0>;
-		gpio-sim-signal-2= <&tlmm 72 0x0>;
-		gpio-sim-power-1-qc = <&tlmm 82 0x0>;
-		gpio-sim-power-1-ntn= <&tlmm 67 0x0>;
-		gpio-sim-power-2-qc = <&tlmm 84 0x0>;
-		gpio-sim-power-2-ntn= <&tlmm 73 0x0>;
-
+		gpio-tt-uart-en  = <&tlmm 177 0x0>;
 		pinctrl-names    = "default";
 		pinctrl-0 	= <&bp_sleep_ap_ctl>,
 				  <&ap_sleep_bp_ctl>,
-				  <&rst_ctl>,
-				  <&boot_mode_ctl>,
-				  <&sim_switch_ctl>;
+				  <&satellite_rst_ctl>,
+				  <&satellite_sim_ctl>;
 	};
 };
 
@@ -320,7 +311,7 @@
 		};
 	};
 
-	rst_ctl: rst_ctl {
+	satellite_rst_ctl: satellite_rst_ctl {
 		mux {
 			pins = "gpio65";
 			function = "gpio";
@@ -334,28 +325,14 @@
 		};
 	};
 
-	boot_mode_ctl: boot_mode_ctl {
+	satellite_sim_ctl: satellite_sim_ctl {
 		mux {
-			pins = "gpio78", "gpio79", "gpio106", "gpio105", "gpio97";
+			pins = "gpio200", "gpio201", "gpio105", "gpio177";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio78", "gpio79", "gpio106", "gpio105", "gpio97";
-			drive-strength = <2>;
-			bias-disable;
-			output-enable;
-		};
-	};
-
-	sim_switch_ctl: sim_switch_ctl {
-		mux {
-			pins = "gpio66", "gpio72", "gpio82", "gpio67", "gpio84", "gpio73";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio66", "gpio72", "gpio82", "gpio67", "gpio84", "gpio73";
+			pins = "gpio200", "gpio201", "gpio105", "gpio177";
 			drive-strength = <2>;
 			bias-disable;
 			output-enable;
