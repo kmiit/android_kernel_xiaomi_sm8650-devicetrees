@@ -397,6 +397,28 @@
 	nvmem = <&pmk8550_sdam_46>;
 };
 
+&pmk8550_gpios {
+	ispv4_sleep_clk {
+		ispv4_sleep_clk_active: ispv4_sleep_clk_active {
+			pins = "gpio3";
+			function = "func1";
+			input-disable;
+			output-enable;
+			bias-disable;
+			power-source = <0>;
+		};
+
+		ispv4_sleep_clk_inactive: ispv4_sleep_clk_inactive {
+			pins = "gpio3";
+			function = "normal";
+			input-enable;
+			output-disable;
+			bias-pull-down;
+			power-source = <0>;
+		};
+	};
+};
+
 &soc {
 	reboot_reason {
 		compatible = "qcom,reboot-reason";
