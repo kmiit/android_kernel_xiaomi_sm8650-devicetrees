@@ -4,13 +4,14 @@
 
 &pm8550_gpios {
 	display_panel_avdd_default: display_panel_avdd_default {
-		pins = "gpio11";
+		//pins = "gpio11";
 		function = "normal";
 		input-disable;
 		output-enable;
 		bias-disable;
 		power-source = <1>;
 		qcom,drive-strength = <3>;
+		status = "disabled";
 	};
 };
 
@@ -44,6 +45,7 @@
 		qcom,proxy-consumer-enable;
 		pinctrl-names = "default";
 		pinctrl-0 = <&display_panel_avdd_default>;
+		status = "disabled";
 	};
 
 	disp_rdump_memory: disp_rdump_region@d5100000 {
