@@ -1,0 +1,52 @@
+#include "pineapple-audio-overlay.dtsi"
+
+&wsa_swr_gpios {
+    status = "disabled";
+};
+
+&wsa2_swr_gpios {
+    status = "disabled";
+};
+
+&pineapple_snd {
+    qcom,sec-mi2s-gpios = <&cdc_sec_tdm_gpios>;
+    qcom,wcd-disable-legacy-surge;
+    qcom,uart-audio-sw-gpio =  <&sbu_uart_en>;
+    qcom,tdm-audio-intf = <1>;
+    qcom,msm-mbhc-usbc-audio-supported = <1>;
+    qcom,wsa-max-devs = <0>;
+    qcom,msm-mbhc-gnd-swh = <0>;
+	qcom,msm-mbhc-hphl-swh = <0>;
+    qcom,uart-audio-sw-gpio = <&sbu_uart_en>;
+	qcom,wsa-max-devs = <0>;
+};
+
+&spf_core_platform {
+	cdc_sec_tdm_gpios: sec_tdm_pinctrl {
+			status = "ok";
+			compatible = "qcom,msm-cdc-pinctrl";
+			pinctrl-0 = <&tdm1_clk_active &tdm1_ws_active &tdm1_din_active &tdm1_dout_active>;
+			pinctrl-1 = <&tdm1_clk_sleep &tdm1_ws_sleep &tdm1_din_sleep &tdm1_dout_sleep>;
+			pinctrl-names = "aud_active", "aud_sleep";
+			#gpio-cells = <0>;
+	};
+    cdc_quin_pcm_gpios: quin_pcm_pinctrl {
+        #gpio-cells = <0>;
+        qcom,lpi-gpios;
+        qcom,tlmm-pins = <171 172 174>;
+		pinctrl-names = "aud_active", "aud_sleep";
+		compatible = "qcom,msm-cdc-pinctrl";
+        status = "disabled";
+
+    };
+};
+
+&soc {
+	sbu_uart_en: msm_cdc_pinctrl@7 {
+		compatible = "qcom,msm-cdc-pinctrl";
+		pinctrl-0 = <&sbu_uart_en_active>;
+		pinctrl-1 = <&sbu_uart_en_idle>;
+		pinctrl-names = "aud_active", "aud_sleep";
+		#gpio-cells = <0>;
+	};
+};

@@ -1,6 +1,7 @@
 DTC_INCLUDE += $(srctree)/../sm8650-modules/qcom/opensource/audio-kernel/include
 
 ifneq ($(CONFIG_MI_HARDWARE_ID),)
+dtbo-$(CONFIG_TARGET_PRODUCT_SHENNONG) += shennong-audio-mtp.dtbo pineapple-audio.dtbo
 else
 ifeq ($(CONFIG_ARCH_KALAMA), y)
 dtbo-y += kalama-audio.dtbo \
