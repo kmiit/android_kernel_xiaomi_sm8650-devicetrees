@@ -711,6 +711,12 @@
 				hysteresis = <1000>;
 				type = "passive";
 			};
+
+			skin-msm-config0 {
+				temperature = <60000>;
+				hysteresis = <10000>;
+				type = "passive";
+			};
 		};
 		cooling-maps {
 			gpu_dump_skip {
