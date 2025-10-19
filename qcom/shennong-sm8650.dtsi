@@ -68,7 +68,7 @@
 &qupv3_se8_i2c {
 	status = "ok";
 
-	cs35l43_b: cs35l43@40 {
+	cs35l43_0: cs35l43@40 {
 		compatible = "cirrus,cs35l43";
 		reg = <0x40>;
 		interrupt-parent = <&tlmm>;
@@ -89,7 +89,7 @@
 		cirrus,vpbr-wait = <0>;
 	};
 
-	cs35l43_t: cs35l43@42 {
+	cs35l43_1: cs35l43@42 {
 		compatible = "cirrus,cs35l43";
 		reg = <0x42>;
 		interrupt-parent = <&tlmm>;
@@ -373,12 +373,12 @@
 
 	satellite_sim_ctl: satellite_sim_ctl {
 		mux {
-			pins = "gpio200", "gpio201", "gpio105", "gpio177";
+			pins = "gpio200", "gpio201", "gpio105", "gpio97";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio200", "gpio201", "gpio105", "gpio177";
+			pins = "gpio200", "gpio201", "gpio105", "gpio97";
 			drive-strength = <2>;
 			bias-disable;
 			output-enable;
