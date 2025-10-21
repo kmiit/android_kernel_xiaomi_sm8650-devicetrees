@@ -38,7 +38,7 @@
 		regulator-min-microvolt = <5500000>;
 		regulator-max-microvolt = <5500000>;
 		regulator-enable-ramp-delay = <233>;
-		gpio = <&pm8550_gpios 11 0>;
+		//gpio = <&pm8550_gpios 11 0>;
 		enable-active-high;
 		regulator-boot-on;
 		proxy-supply = <&display_panel_avdd>;
@@ -48,15 +48,15 @@
 		status = "disabled";
 	};
 
-	disp_rdump_memory: disp_rdump_region@d5100000 {
-		reg = <0xd5100000 0x00800000>;
+	disp_rdump_memory: disp_rdump_region@fc400000 {
+		reg = <0xfc400000 0x1400000>;
 		label = "disp_rdump_region";
 	};
 };
 
 &reserved_memory {
 	splash_memory: splash_region {
-		reg = <0x0 0xd5100000 0x0 0x02b00000>;
+		reg = <0x0 0xfc400000 0x0 0x02b00000>;
 		label = "cont_splash_region";
 	};
 	/*

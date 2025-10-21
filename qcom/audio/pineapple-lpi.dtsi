@@ -699,7 +699,7 @@
 			config {
 				pins = "gpio1";
 				drive-strength = <2>;   /* 2 mA */
-				bias-pull-down;         /* PULL DOWN */
+				bias-disable;         /* PULL DOWN */
 				input-enable;
 			};
 		};
@@ -789,7 +789,7 @@
 			config {
 				pins = "gpio4";
 				drive-strength = <2>;   /* 2 mA */
-				bias-pull-down;         /* PULL DOWN */
+				bias-disable;         /* PULL DOWN */
 				input-enable;
 			};
 		};

@@ -31,7 +31,7 @@
 	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
 	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
 	qcom,board-id = <8 0>;
-	xiaomi,miboard-id = <0x1 0>;
+	xiaomi,miboard-id = <1 0>;
 	aliases {
 		hsuart1 = &qupv3_se13_4uart;
 	};
@@ -62,59 +62,6 @@
 &L8B {
 	regulator-max-microvolt = <3300000>;
 	qcom,init-voltage = <3300000>;
-};
-
-
-&qupv3_se8_i2c {
-	status = "ok";
-
-	cs35l43_0: cs35l43@40 {
-		compatible = "cirrus,cs35l43";
-		reg = <0x40>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <98 0x2008>;
-		reset-gpios = <&tlmm 85 GPIO_ACTIVE_HIGH>;
-		sound-name-prefix = "B";
-		cirrus,asp-sdout-hiz = <3>;
-		cirrus,bst-ipk-ma = <4000>;
-		cirrus,gpio2-src-sel = <4>;
-		cirrus,i2c-addr = <40>;
-		cirrus,low-pwr-mode-standby = <1>;
-		cirrus,vpbr-atk-rate = <0>;
-		cirrus,vpbr-atk-vol = <5>;
-		cirrus,vpbr-enable = <1>;
-		cirrus,vpbr-max-att = <3>;
-		cirrus,vpbr-rel-rate = <0>;
-		cirrus,vpbr-thld = <8>;
-		cirrus,vpbr-wait = <0>;
-		pinctrl-0 = <&cirrus_reset_default_0>, <&cirrus_irq_default_0>;
-		pinctrl-names = "default";
-		status = "ok";
-	};
-
-	cs35l43_1: cs35l43@42 {
-		compatible = "cirrus,cs35l43";
-		reg = <0x42>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <99 0x2008>;
-		reset-gpios = <&tlmm 111 GPIO_ACTIVE_HIGH>;
-		sound-name-prefix = "T";
-		cirrus,asp-sdout-hiz = <3>;
-		cirrus,bst-ipk-ma = <4000>;
-		cirrus,gpio2-src-sel = <4>;
-		cirrus,i2c-addr = <42>;
-		cirrus,low-pwr-mode-standby = <1>;
-		cirrus,vpbr-atk-rate = <0>;
-		cirrus,vpbr-atk-vol = <5>;
-		cirrus,vpbr-enable = <1>;
-		cirrus,vpbr-max-att = <3>;
-		cirrus,vpbr-rel-rate = <0>;
-		cirrus,vpbr-thld = <8>;
-		cirrus,vpbr-wait = <0>;
-		pinctrl-0 = <&cirrus_reset_default_1>, <&cirrus_irq_default_1>;
-		pinctrl-names = "default";
-		status = "ok";
-	};
 };
 
 &soc {
@@ -548,39 +495,21 @@
 };
 
 &qupv3_se0_i2c {
-	status = "ok";
-	qcom,clk-freq-out = <1000000>;
-	#address-cells = <1>;
-	#size-cells = <0>;
 	nq@28 {
-		compatible = "qcom,sn-nci";
-		reg = <0x28>;
-		qcom,sn-irq = <&tlmm 75 0x00>;
-		qcom,sn-ven = <&tlmm 34 0x00>;
-		qcom,sn-clkreq = <&tlmm 35 0x00>;
-		qcom,sn-szone = "enable";
 		qcom,sn-vdd-1p8-supply = <&L3C>;
 		qcom,sn-vdd-1p8-voltage = <1200000 1200000>;
 		qcom,sn-vdd-1p8-current = <157000>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <75 0>;
-		interrupt-names = "nfc_irq";
-		pinctrl-names = "nfc_active", "nfc_suspend";
-		pinctrl-0 = <&nfc_int_active &nfc_enable_active>;
-		pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
 	};
 };
 
 &pm8550b_gpios {
 	charger_therm0 {
 		charger_therm0_default: charger_therm0_default {
-		pins = "gpio10";
-		bias-high-impedance;
+			pins = "gpio10";
+			bias-high-impedance;
 		};
 	};
-};
 
-&pm8550b_gpios {
 	quiet_therm0 {
 		quiet_therm0_default: quiet_therm0_default {
 		pins = "gpio12";
@@ -596,9 +525,7 @@
 		bias-high-impedance;
 		};
 	};
-};
 
-&pm8550_gpios {
 	pa_therm1 {
 		pa_therm1_default: pa_therm1_default {
 		pins = "gpio3";
@@ -912,10 +839,10 @@
 &wcd_usbss {
 	wcd-equ-bw-settings = <0xF>;
 	wcd-equ-bw-settings-new = <0x0>;
-	wcd-equ-bw-settings-mp = <0x2>;
+	wcd-equ-bw-settings-mp = <0x6>;
 	wcd-equ-bw-settings-host = <0xF>;
 	wcd-equ-bw-settings-new-host = <0x0>;
-	wcd-equ-bw-settings-mp-host = <0x2>;
+	wcd-equ-bw-settings-mp-host = <0x6>;
 };
 &usb_qmp_dp_phy {
 	qcom,qmp-phy-init-seq =
@@ -1104,16 +1031,16 @@
 		0x02 0x5b>;
 	qcom,param-override-seq-mp-host =
 		<0x00 0x50
-		0x0E 0x51
+		0x0e 0x51
 		0x04 0x52
 		0x07 0x53
 		0x00 0x54
-		0x01 0x55
-		0x03 0x56
-		0x05 0x57
+		0x00 0x55
+		0x02 0x56
+		0x04 0x57
 		0x02 0x58
-                0x01 0x59
-		0x03 0x5a
+		0x00 0x59
+		0x02 0x5a
 		0x02 0x5b>;
 	qcom,param-override-seq =
 		<0x00 0x50
@@ -1143,15 +1070,15 @@
 		0x02 0x5b>;
 	qcom,param-override-seq-mp =
 		<0x00 0x50
-		0x0F 0x51
+		0x0f 0x51
 		0x03 0x52
 		0x07 0x53
 		0x01 0x54
-		0x01 0x55
+		0x00 0x55
 		0x03 0x56
-		0x06 0x57
+		0x07 0x57
 		0x02 0x58
-		0x01 0x59
+		0x00 0x59
 		0x03 0x5a
 		0x02 0x5b>;
 };

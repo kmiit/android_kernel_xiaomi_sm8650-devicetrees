@@ -102,3 +102,14 @@
 	};
 };
 
+
+&dsi_r66451_amoled_video {
+	qcom,mdss-dsi-bl-inverted-dbv;
+	qcom,mdss-brightness-max-level = <2047>;
+	qcom,mdss-dsi-bl-max-level = <2047>;
+	qcom,mdss-dsi-bl-min-level = <10>;
+	qcom,mdss-dsi-sec-bl-pmic-control-type = "bl_ctrl_dcs";
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
+	qcom,panel-sec-supply-entries = <&dsi_panel_pwr_supply_sim>;
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_sim>;
+}；

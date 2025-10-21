@@ -1,3 +1,6 @@
+#include <dt-bindings/gpio/gpio.h>
+
+#include "shennong-pinctl.dtsi"
 #include "xiaomi-sm8650-common.dtsi"
 
 &pineapple_snd {
@@ -53,3 +56,56 @@
         "Digital Mic2", "VA MIC BIAS1",
         "Digital Mic3", "VA MIC BIAS1";
 };
+
+&qupv3_se8_i2c {
+	status = "ok";
+
+	cs35l43_0: cs35l43@40 {
+		compatible = "cirrus,cs35l43";
+		reg = <0x40>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <98 0x2008>;
+		reset-gpios = <&tlmm 85 GPIO_ACTIVE_HIGH>;
+		sound-name-prefix = "B";
+		cirrus,asp-sdout-hiz = <3>;
+		cirrus,bst-ipk-ma = <4000>;
+		cirrus,gpio2-src-sel = <4>;
+		cirrus,i2c-addr = <40>;
+		cirrus,low-pwr-mode-standby = <1>;
+		cirrus,vpbr-atk-rate = <0>;
+		cirrus,vpbr-atk-vol = <5>;
+		cirrus,vpbr-enable = <1>;
+		cirrus,vpbr-max-att = <3>;
+		cirrus,vpbr-rel-rate = <0>;
+		cirrus,vpbr-thld = <8>;
+		cirrus,vpbr-wait = <0>;
+		pinctrl-0 = <&cirrus_reset_default_0>, <&cirrus_irq_default_0>;
+		pinctrl-names = "default";
+		status = "ok";
+	};
+
+	cs35l43_1: cs35l43@42 {
+		compatible = "cirrus,cs35l43";
+		reg = <0x42>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <99 0x2008>;
+		reset-gpios = <&tlmm 111 GPIO_ACTIVE_HIGH>;
+		sound-name-prefix = "T";
+		cirrus,asp-sdout-hiz = <3>;
+		cirrus,bst-ipk-ma = <4000>;
+		cirrus,gpio2-src-sel = <4>;
+		cirrus,i2c-addr = <42>;
+		cirrus,low-pwr-mode-standby = <1>;
+		cirrus,vpbr-atk-rate = <0>;
+		cirrus,vpbr-atk-vol = <5>;
+		cirrus,vpbr-enable = <1>;
+		cirrus,vpbr-max-att = <3>;
+		cirrus,vpbr-rel-rate = <0>;
+		cirrus,vpbr-thld = <8>;
+		cirrus,vpbr-wait = <0>;
+		pinctrl-0 = <&cirrus_reset_default_1>, <&cirrus_irq_default_1>;
+		pinctrl-names = "default";
+		status = "ok";
+	};
+};
+

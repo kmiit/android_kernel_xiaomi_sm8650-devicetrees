@@ -12,6 +12,50 @@
 	status = "disabled";
 };
 
+&wsa_spkr_en02 {
+	status = "disabled";
+};
+
+&wsa_spkr_en13 {
+	status = "disabled";
+};
+
+&cdc_dmic01_gpios {
+	status = "disabled";
+};
+
+&cdc_dmic23_gpios {
+	status = "disabled";
+};
+
+&cdc_dmic45_gpios {
+	status = "disabled";
+};
+
+&cdc_dmic67_gpios {
+	status = "disabled";
+};
+
+&wsa_macro {
+	status = "disabled";
+};
+
+&wsa884x_0220 {
+	status = "disabled";
+};
+
+&wsa884x_0221 {
+	status = "disabled";
+};
+
+&wsa884x_2_0220 {
+	status = "disabled";
+};
+
+&wsa884x_2_0221 {
+	status = "disabled";
+};
+
 &pineapple_snd {
     qcom,sec-mi2s-gpios = <&cdc_sec_tdm_gpios>;
     qcom,wcd-disable-legacy-surge;
@@ -36,6 +80,7 @@
 			pinctrl-names = "aud_active", "aud_sleep";
 			#gpio-cells = <0>;
 	};
+
     cdc_quin_pcm_gpios: quin_pcm_pinctrl {
         #gpio-cells = <0>;
         qcom,lpi-gpios;
@@ -52,12 +97,20 @@
 };
 
 &soc {
-	sbu_uart_en: msm_cdc_pinctrl@7 {
+	sbu_uart_en: msm_cdc_pinctrl@53 {
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-0 = <&sbu_uart_en_active>;
 		pinctrl-1 = <&sbu_uart_en_idle>;
 		pinctrl-names = "aud_active", "aud_sleep";
 		#gpio-cells = <0>;
+	};
+
+	clock_audio_hifi_dac_mclk: hifi_dac_clk {
+		#clock-cells = <1>;
+		qcom,codec-lpass-clk-id = <0x300>;
+		qcom,codec-lpass-ext-clk-freq = <0x1f4000>;
+		qcom,codec-ext-clk-src = <AUDIO_LPASS_MCLK_14>;
+		compatible = "qcom,audio-ref-clk";
 	};
 };
 
