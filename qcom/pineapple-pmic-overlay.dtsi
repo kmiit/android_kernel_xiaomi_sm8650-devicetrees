@@ -159,7 +159,7 @@
 	};
 };
 
-&pmk8550_gpios {
+/* &pmk8550_gpios {
 	pinctrl-0 = <&alt_sleep_clk_default>;
 	pinctrl-names = "default";
 
@@ -173,7 +173,7 @@
 			power-source = <0>;
 		};
 	};
-};
+}; */
 
 &soc {
 	gpu_dump_skip_cdev: qcom,gpu-dump-skip-cdev {

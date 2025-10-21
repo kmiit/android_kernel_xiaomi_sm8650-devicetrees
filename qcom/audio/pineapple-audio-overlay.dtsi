@@ -384,10 +384,10 @@
 
 		qcom,cdc-vdd-px-rem-supported = <1>;
 
-		qcom,cdc-micbias1-mv = <1800>;
-		qcom,cdc-micbias2-mv = <1800>;
-		qcom,cdc-micbias3-mv = <1800>;
-		qcom,cdc-micbias4-mv = <1800>;
+		qcom,cdc-micbias1-mv = <2750>;
+		qcom,cdc-micbias2-mv = <2750>;
+		qcom,cdc-micbias3-mv = <2750>;
+		qcom,cdc-micbias4-mv = <2750>;
 
 		qcom,cdc-static-supplies = "cdc-vdd-rx",
 					   "cdc-vdd-tx",
@@ -625,6 +625,7 @@
 		qcom,lpi-gpios;
 		qcom,tlmm-pins = <176>;
 		#gpio-cells = <0>;
+		status = "disabled";
 	};
 
 	wsa2_swr_gpios: wsa2_swr_clk_data_pinctrl {
@@ -635,6 +636,7 @@
 		qcom,lpi-gpios;
 		qcom,tlmm-pins = <181>;
 		#gpio-cells = <0>;
+		status = "disabled";
 	};
 
 	rx_swr_gpios: rx_swr_clk_data_pinctrl {

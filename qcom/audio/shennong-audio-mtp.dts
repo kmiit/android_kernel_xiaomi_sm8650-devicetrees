@@ -1,7 +1,6 @@
 /dts-v1/;
 /plugin/;
 
-//#include "pineapple-audio-overlay.dtsi"
 #include "shennong-audio-mtp.dtsi"
  / {
 	model = "Qualcomm Technologies, Inc. Shennong based on Pineapple";

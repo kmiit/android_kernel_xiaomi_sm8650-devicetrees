@@ -8,6 +8,10 @@
     status = "disabled";
 };
 
+&fm_i2s1_gpios {
+	status = "disabled";
+};
+
 &pineapple_snd {
     qcom,sec-mi2s-gpios = <&cdc_sec_tdm_gpios>;
     qcom,wcd-disable-legacy-surge;
@@ -19,6 +23,8 @@
 	qcom,msm-mbhc-hphl-swh = <0>;
     qcom,uart-audio-sw-gpio = <&sbu_uart_en>;
 	qcom,wsa-max-devs = <0>;
+	qcom,tdm-max-slots = <4>;
+	qcom,tdm-clk-attribute = <4 4 4 4 4 4 4 4>;
 };
 
 &spf_core_platform {
@@ -38,6 +44,10 @@
 		compatible = "qcom,msm-cdc-pinctrl";
         status = "disabled";
 
+		pinctrl-0 = <&lpi_i2s3_sck_active &lpi_i2s3_ws_active
+				&lpi_i2s3_sd0_active &lpi_i2s3_sd1_active>;
+		pinctrl-1 = <&lpi_i2s3_sck_sleep &lpi_i2s3_ws_sleep
+				&lpi_i2s3_sd0_sleep &lpi_i2s3_sd1_sleep>;
     };
 };
 
@@ -49,4 +59,23 @@
 		pinctrl-names = "aud_active", "aud_sleep";
 		#gpio-cells = <0>;
 	};
+};
+
+&wcd939x_codec {
+	qcom,usbcss-hs-lin-k-aud = <13>;
+	qcom,usbcss-hs-diff-slope = <9898>;
+	qcom,usbcss-hs-rcom-margin = <500>;
+	qcom,usbcss-hs-r7-sbu2 = <10>;
+	qcom,usbcss-hs-r7-sbu1 = <36>;
+	qcom,usbcss-hs-r6-sbu2 = <4>;
+	qcom,usbcss-hs-r6-sbu1 = <6>;
+	qcom,usbcss-hs-r4-sbu2 = <1032>;
+	qcom,usbcss-hs-r4-sbu1 = <960>;
+	qcom,usbcss-hs-r3-r = <135>;
+	qcom,usbcss-hs-r3-l = <135>;
+	qcom,usbcss-hs-r1-r = <10310>;
+	qcom,usbcss-hs-r1-l = <10310>;
+	qcom,usbcss-hs-rdson-6v = <340>;
+	qcom,usbcss-hs-rdson-3p6v = <390>;
+	qcom,usbcss-hs-xtalk-config = <1>;
 };
