@@ -31,6 +31,7 @@
 	};
 };
 
-&pcie0_rp {
-	status = "disabled";
+&wcd_usbss {
+	pinctrl-names = "usbss_active", "usbss_sleep";
+	reset-gpios = <0xc5 0x98 0x00>;
 };

@@ -72,7 +72,7 @@
 };
 
 &spf_core_platform {
-	qcom,num-macros = <3>;
+	//qcom,num-macros = <3>;
 	cdc_sec_tdm_gpios: sec_tdm_pinctrl {
 			status = "ok";
 			compatible = "qcom,msm-cdc-pinctrl";

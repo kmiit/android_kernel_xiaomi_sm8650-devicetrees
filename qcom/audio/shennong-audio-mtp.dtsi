@@ -109,3 +109,6 @@
 	};
 };
 
+&lpass_cdc {
+    qcom,num-macros = <3>;
+};
