@@ -404,6 +404,10 @@
 				&cam_sensor_wide_suspend_rst>;
 		status = "ok";
 	};
+
+	qcom,cam-cre {
+		status = "disabled";
+	};
 };
 
 &cam_cci0 {

@@ -56,4 +56,29 @@
 			};
 		};
 	};
+
+	wcd_usbss_reset_active: wcd_usbss_reset_active {
+		mux {
+			function = "gpio";
+			pins = "gpio152";
+		};
+		config {
+			output-high;
+			drive-strength = <16>;
+			pins = "gpio152";
+		};
+	};
+
+	wcd_usbss_reset_sleep: wcd_usbss_reset_sleep {
+		mux {
+			function = "gpio";
+			pins = "gpio152";
+		};
+		config {
+			output-low;
+			bias-disable;
+			drive-strength = <16>;
+			pins = "gpio152";
+		};
+	};
 };

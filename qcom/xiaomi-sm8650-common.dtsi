@@ -30,3 +30,7 @@
 		};
 	};
 };
+
+&pcie0_rp {
+	status = "disabled";
+};
