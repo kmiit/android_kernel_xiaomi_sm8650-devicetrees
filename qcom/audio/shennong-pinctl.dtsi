@@ -113,3 +113,8 @@
 	};
 
 };
+
+&wcd_usbss {
+	pinctrl-0 = <&wcd_usbss_reset_active>;
+	pinctrl-1 = <&wcd_usbss_reset_sleep>;
+};

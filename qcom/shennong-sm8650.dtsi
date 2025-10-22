@@ -1015,6 +1015,7 @@
 			USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_L 0x40
 			USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_H 0x00>;
 };
+
 &pm8550b_eusb2_repeater {
 	qcom,param-override-seq-host =
 		<0x00 0x50
