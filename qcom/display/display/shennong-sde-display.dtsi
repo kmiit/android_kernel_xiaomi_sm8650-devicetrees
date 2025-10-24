@@ -70,6 +70,9 @@
 };
 
 &qupv3_se4_spi {
+	goodix-berlin@0 {
+		status = "disabled";
+	};
 	synaptics_tcm@0 {
 		panel = <&dsi_n2_42_02_0a_dsc_cmd
 			&dsi_n2_42_02_0a_p11_dsc_cmd
