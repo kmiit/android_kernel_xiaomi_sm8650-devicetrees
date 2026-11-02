@@ -1,5 +1,6 @@
 ifneq ($(CONFIG_MI_HARDWARE_ID),)
 dtbo-$(CONFIG_ARCH_PINEAPPLE) += display/pineapple-sde.dtbo
+dtbo-$(CONFIG_TARGET_PRODUCT_SHENNONG) += display/shennong-sde-display-mtp-overlay.dtbo
 else
 ifeq ($(CONFIG_TARGET), neo)
 dtbo-$(CONFIG_ARCH_NEO) += display/neo-sde.dtbo \
