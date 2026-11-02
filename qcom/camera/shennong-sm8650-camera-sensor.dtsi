@@ -1,5 +1,15 @@
 #include <dt-bindings/msm-camera.h>
 
+&cam_bps {
+	compatible = "qcom,cam-bps680";
+};
+
+&cam_smmu {
+	msm_cam_smmu_jpeg {
+		iommus = <&apps_smmu 0x18a0 0x0040>;
+	};
+};
+
 //wide
 &cam_csiphy3 {
 	compatible = "qcom,csiphy-v2.2.0-n2", "qcom,csiphy";
