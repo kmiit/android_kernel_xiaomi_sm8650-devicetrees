@@ -7,6 +7,7 @@
 #include "xiaomi-sm8650-common.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/clock/qcom,gcc-pineapple.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/interconnect/qcom,pineapple.h>
 #include <dt-bindings/interconnect/qcom,icc.h>
@@ -97,6 +98,11 @@
 };
 
 &soc {
+	qcom,cnss-kiwi@b0000000 {
+		clocks = <&rpmhcc RPMH_RF_CLK1>;
+		clock-names = "rf_clk";
+	};
+
 	jingshang_mdm {
 		compatible = "mdm,gpio-jingshang";
 		interrupt-parent = <&tlmm>;
