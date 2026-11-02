@@ -1127,3 +1127,7 @@
 	qcom,custom_vmax_mv = <8300>;
 	status = "ok";
 };
+
+&pcie1 {
+	status = "disabled";
+};
