@@ -1,5 +1,28 @@
 #include "xiaomi-sm8650-common.dtsi"
 
+&cdc_quat_mi2s_gpios {
+	pinctrl-0 = <&quat_tdm_sck_active &quat_tdm_ws_active
+		&quat_tdm_sd0_active &quat_tdm_sd1_active
+		&quat_tdm_sd2_active &quat_tdm_sd3_active>;
+	pinctrl-1 = <&quat_tdm_sck_sleep &quat_tdm_ws_sleep
+		&quat_tdm_sd0_sleep &quat_tdm_sd1_sleep
+		&quat_tdm_sd2_sleep &quat_tdm_sd3_sleep>;
+};
+
+&cdc_quin_mi2s_gpios {
+	pinctrl-0 = <&lpi_tdm1_sck_active &lpi_tdm1_ws_active
+		&lpi_tdm1_sd0_active &lpi_tdm1_sd1_active>;
+	pinctrl-1 = <&lpi_tdm1_sck_sleep &lpi_tdm1_ws_sleep
+		&lpi_tdm1_sd0_sleep &lpi_tdm1_sd1_sleep>;
+};
+
+&cdc_sen_mi2s_gpios {
+	pinctrl-0 = <&lpi_tdm2_sck_active &lpi_tdm2_ws_active
+		&lpi_tdm2_sd0_active &lpi_tdm2_sd1_active>;
+	pinctrl-1 = <&lpi_tdm2_sck_sleep &lpi_tdm2_ws_sleep
+		&lpi_tdm2_sd0_sleep &lpi_tdm2_sd1_sleep>;
+};
+
 &pineapple_snd {
 	qcom,audio-routing =
 		"AMIC1", "Analog Mic1",
