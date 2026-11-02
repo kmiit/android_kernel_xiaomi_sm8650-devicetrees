@@ -27,10 +27,11 @@
 
                 L3D: pm_v6d_l3: regulator-pm-v6d-l3 {
                         regulator-name = "pm_v6d_l3";
+                        qcom,proxy-consumer-enable;
                         qcom,set = <RPMH_REGULATOR_SET_ALL>;
-                        regulator-min-microvolt = <1200000>;
-                        regulator-max-microvolt = <1200000>;
-                        qcom,init-voltage = <1200000>;
+                        regulator-min-microvolt = <1100000>;
+                        regulator-max-microvolt = <1100000>;
+                        qcom,init-voltage = <1100000>;
                         qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
                 };
         };
@@ -96,6 +97,25 @@
 };
 
 &soc {
+	jingshang_mdm {
+		compatible = "mdm,gpio-jingshang";
+		interrupt-parent = <&tlmm>;
+		interrupts = <64 0x0>;
+		debounce-time = <30>;
+		vdda3p3_vdd-supply = <&L8B>;
+		vdda1p1_vdd-supply = <&L3D>;
+		gpio-bq-sleep-ap = <&tlmm 64 0x0>;
+		gpio-aq-sleep-bp = <&tlmm 70 0x0>;
+		gpio-rst = <&tlmm 65 0x0>;
+		gpio-sim-ctl0 = <&tlmm 200 0x0>;
+		gpio-sim-ctl1 = <&tlmm 201 0x0>;
+		gpio-sat-1p8-en = <&tlmm 105 0x0>;
+		gpio-tt-uart-en = <&tlmm 97 0x0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&bp_sleep_ap_ctl &ap_sleep_bp_ctl
+			&satellite_rst_ctl &satellite_sim_ctl>;
+	};
+
 	xiaomi_touch {
 		compatible = "xiaomi-touch";
 		status = "ok";

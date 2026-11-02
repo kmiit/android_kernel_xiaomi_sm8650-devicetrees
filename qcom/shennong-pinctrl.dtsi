@@ -265,4 +265,60 @@
 			};
 		};
 	};
+
+	bp_sleep_ap_ctl: bp_sleep_ap_ctl {
+		mux {
+			pins = "gpio64";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio64";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	ap_sleep_bp_ctl: ap_sleep_bp_ctl {
+		mux {
+			pins = "gpio70";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio70";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	satellite_rst_ctl: satellite_rst_ctl {
+		mux {
+			pins = "gpio65";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio65";
+			drive-strength = <2>;
+			bias-disable;
+			output-enable;
+		};
+	};
+
+	satellite_sim_ctl: satellite_sim_ctl {
+		mux {
+			pins = "gpio200", "gpio201", "gpio105", "gpio97";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio200", "gpio201", "gpio105", "gpio97";
+			drive-strength = <2>;
+			bias-disable;
+			output-enable;
+		};
+	};
 }; //tlmm
