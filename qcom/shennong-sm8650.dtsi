@@ -6,6 +6,14 @@
 #include "shennong-pinctrl.dtsi"
 #include "xiaomi-sm8650-common.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/clock/qcom,gcc-pineapple.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/interconnect/qcom,pineapple.h>
+#include <dt-bindings/interconnect/qcom,icc.h>
+
+&{/aliases} {
+	hsuart1 = "/soc/qcom,qupv3_2_geni_se@8c0000/qcom,qup_uart@894000";
+};
 
 &apps_rsc_drv2 {
         rpmh-regulator-ldod3 {
@@ -1054,4 +1062,31 @@
 	qcom,shutdown-voltage = <3150>;
 	mi,support-shutdown-delay;
 	mi,support-fast-update-timer;
+};
+
+&qupv3_2 {
+	qupv3_se13_4uart: qcom,qup_uart@894000 {
+		compatible = "qcom,msm-geni-serial-hs";
+		reg = <0x894000 0x4000>;
+		reg-names = "se_phys";
+		interrupts-extended = <&intc GIC_SPI 587 IRQ_TYPE_LEVEL_HIGH>;
+		clock-names = "se-clk";
+		clocks = <&gcc GCC_QUPV3_WRAP2_S5_CLK>;
+		interconnect-names = "qup-core", "qup-config", "qup-memory";
+		interconnects =
+			<&clk_virt MASTER_QUP_CORE_2 &clk_virt SLAVE_QUP_CORE_2>,
+			<&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_QUP_2>,
+			<&aggre2_noc MASTER_QUP_2 &mc_virt SLAVE_EBI1>;
+		pinctrl-names = "default", "active", "sleep", "shutdown";
+		pinctrl-0 = <&qupv3_se13_default_cts &qupv3_se13_default_rts
+			&qupv3_se13_default_tx &qupv3_se13_default_rx>;
+		pinctrl-1 = <&qupv3_se13_cts &qupv3_se13_rts
+			&qupv3_se13_tx &qupv3_se13_rx>;
+		pinctrl-2 = <&qupv3_se13_cts &qupv3_se13_rts
+			&qupv3_se13_tx &qupv3_se13_default_rx>;
+		pinctrl-3 = <&qupv3_se13_default_cts &qupv3_se13_default_rts
+			&qupv3_se13_default_tx &qupv3_se13_default_rx>;
+		qcom,auto-suspend-disable;
+		status = "ok";
+	};
 };
