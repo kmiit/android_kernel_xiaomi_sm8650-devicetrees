@@ -1114,3 +1114,16 @@
 		status = "ok";
 	};
 };
+
+&pm8550b_haptics {
+	qcom,vmax-mv = <1600>;
+	qcom,lra-period-us = <7692>;
+	qcom,lra-f0-cal-count = <570>;
+	qcom,lra-f0-default = <130>;
+	qcom,lra-f0-max = <140>;
+	qcom,lra-f0-min = <120>;
+	qcom,lra_calibration_vmax_hdrm_mv = <500>;
+	qcom,f0-vmax-mv = <1750>;
+	qcom,custom_vmax_mv = <8300>;
+	status = "ok";
+};
