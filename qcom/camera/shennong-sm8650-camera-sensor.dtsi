@@ -750,3 +750,11 @@
 		status = "ok";
 	};
 };
+
+&cam_cre {
+	status = "disabled";
+};
+
+&cre {
+	status = "disabled";
+};
