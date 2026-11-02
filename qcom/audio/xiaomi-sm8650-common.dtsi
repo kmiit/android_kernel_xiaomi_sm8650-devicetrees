@@ -58,6 +58,7 @@
 
 &pineapple_snd {
 	qcom,sec-mi2s-gpios = <&cdc_sec_tdm_gpios>;
+	qcom,wcd-disable-legacy-surge;
 	qcom,msm-mbhc-gnd-swh = <0>;
 	qcom,msm-mbhc-hphl-swh = <0>;
 	qcom,msm-mbhc-usbc-audio-supported = <1>;
@@ -80,6 +81,14 @@
 };
 
 &soc {
+	clock_audio_hifi_dac_mclk: hifi_dac_clk {
+		compatible = "qcom,audio-ref-clk";
+		#clock-cells = <1>;
+		qcom,codec-lpass-clk-id = <0x300>;
+		qcom,codec-lpass-ext-clk-freq = <2048000>;
+		qcom,codec-ext-clk-src = <AUDIO_LPASS_MCLK_14>;
+	};
+
 	sbu_uart_en: msm_cdc_pinctrl@53 {
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-0 = <&sbu_uart_en_active>;
@@ -93,10 +102,25 @@
 	qcom,num-macros = <3>;
 };
 
-&wcd938x_codec {
+&wcd939x_codec {
 	qcom,cdc-micbias1-mv = <2750>;
 	qcom,cdc-micbias2-mv = <2750>;
 	qcom,cdc-micbias3-mv = <2750>;
 	qcom,cdc-micbias4-mv = <2750>;
-	qcom,cdc-vdd-mic-bias-voltage = <3296000 3960000>;
+	qcom,usbcss-hs-lin-k-aud = <13>;
+	qcom,usbcss-hs-diff-slope = <9898>;
+	qcom,usbcss-hs-rcom-margin = <500>;
+	qcom,usbcss-hs-r7-sbu2 = <10>;
+	qcom,usbcss-hs-r7-sbu1 = <36>;
+	qcom,usbcss-hs-r6-sbu2 = <4>;
+	qcom,usbcss-hs-r6-sbu1 = <6>;
+	qcom,usbcss-hs-r4-sbu2 = <1032>;
+	qcom,usbcss-hs-r4-sbu1 = <960>;
+	qcom,usbcss-hs-r3-r = <135>;
+	qcom,usbcss-hs-r3-l = <135>;
+	qcom,usbcss-hs-r1-r = <10310>;
+	qcom,usbcss-hs-r1-l = <10310>;
+	qcom,usbcss-hs-rdson-6v = <340>;
+	qcom,usbcss-hs-rdson-3p6v = <390>;
+	qcom,usbcss-hs-xtalk-config = <1>;
 };
