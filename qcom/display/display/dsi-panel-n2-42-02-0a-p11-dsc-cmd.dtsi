@@ -48,7 +48,7 @@
 
 		/* IRQF_ONESHOT | IRQF_TRIGGER_HIGH */
 		mi,esd-err-irq-gpio = <&tlmm 87 0x2004>;
-		mi,panel-id = <0x00004E32 0x00420200>;
+		mi,panel-id = <0x00004E32 0x0042020A>;
 		qcom,esd-check-enabled;
 		qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 		qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 91];
