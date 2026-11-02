@@ -14,7 +14,7 @@ add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifneq ($(CONFIG_MI_HARDWARE_ID),)
 dtb-$(CONFIG_ARCH_PINEAPPLE) += pineapple-v2.dtb
-
+dtb-$(CONFIG_TARGET_PRODUCT_SHENNONG) += shennong-sm8650-overlay.dtbo
 else
 PINEAPPLE_BASE_DTB += pineapple-v2.dtb pineapple-qcm.dtb
 PINEAPPLE_APQ_BASE_DTB += pineapplep-v2.dtb pineapplep-sg-v2.dtb pineappleq-v2.dtb pineapplep-qcs.dtb

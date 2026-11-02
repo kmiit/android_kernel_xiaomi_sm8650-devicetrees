@@ -386,6 +386,16 @@ _platform_map = {
             {"name": "cliffs-mtp-peach-overlay.dtbo"},
         ],
     },
+    "shennong": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "pineapple-v2.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "shennong-sm8650-overlay.dtbo"},
+        ],
+    },
     "pineapple-tuivm": {
         "dtb_list": [
             {"name": "pineapple-oemvm-rcm.dtb"},
