@@ -832,6 +832,10 @@
 	qcom,wcd_usbss = <&wcd_usbss>;
 };
 &wcd_usbss {
+	reset-gpios = <&tlmm 152 0>;
+	pinctrl-names = "usbss_active", "usbss_sleep";
+	pinctrl-0 = <&wcd_usbss_reset_active>;
+	pinctrl-1 = <&wcd_usbss_reset_sleep>;
 	wcd-equ-bw-settings = <0xF>;
 	wcd-equ-bw-settings-new = <0x0>;
 	wcd-equ-bw-settings-mp = <0x2>;
